@@ -134,7 +134,22 @@ class BookingController extends Controller
 
     public function bookingNotification($id)
     {
+        date_default_timezone_set("Asia/Tashkent");
         $model = Booking::find($id);
+
+        $expire_date = json_decode($model->expire_dates);
+        if (isset($model)) {
+            $house = HouseFlat::find($model->house_flat_id);
+            if (strtotime('now') > strtotime(end($expire_date)->date)) {
+                $model->status=0;
+                if ($house->status !=Constants::STATUS_SOLD) {
+                    $house->status = 0;
+                    $house->save();
+                }
+                
+            }
+            $model->save();
+        }
         $notifications = Notifications_::where(['relation_id' => $id, 'relation_type' => NULL])->first();
         $user = Auth::user();
         if(isset($notifications->id)){
@@ -380,7 +395,28 @@ class BookingController extends Controller
      */
     public function show($id)
     {
+
         $model = Booking::find($id);
+
+        $expire_date = json_decode($model->expire_dates);
+        if (isset($model)) {
+            $house = HouseFlat::find($model->house_flat_id);
+            
+            if (strtotime('now') > strtotime(end($expire_date)->date)) {
+                $model->status=0;
+                if ($house->status !=Constants::STATUS_SOLD) {
+                    $house->status = 0;
+                    $house->save();
+                }
+                
+            }
+            $model->save();
+        }
+
+
+
+
+
 
         $booking = ['Booking', 'BookingPrepayment'];
         $notifications = Notification_::whereIn('type', $booking)->where('notifiable_id', $id)->get();
