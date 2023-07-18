@@ -488,9 +488,9 @@
                                     style="padding-right: 10px;">1</div> --}}
                             </div>
                             <div class="sozdatImyaSpsok" style="width: 100%; margin-left: 15px;">
-                                <h3 class="sozdatImyaSpisokH3">{{ translate('Kyrgyz soum') }}
+                                {{-- <h3 class="sozdatImyaSpisokH3">{{ translate('Kyrgyz soum') }}
                                     <input class="checkbox_kg" name="checkbox_kg" type="checkbox">
-                                </h3>
+                                </h3> --}}
                                 <input type="number" class="form-control" name="SUM" min="0" autocomplete="off"
                                     value="{{ (isset($currency->SUM) ? $currency->SUM : 0) / (isset($currency->USD) ? $currency->USD : 1) }}" readonly>
                                 {{-- <div class="sozdatImyaSpisokInput text-right activeDollarSummaJK24"
