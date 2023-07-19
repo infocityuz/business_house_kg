@@ -266,7 +266,7 @@
             $('#sent').datetimepicker({
                 format: 'Y-M-D',
             });
-            $('input[type=tel]').mask("(99) 999-99-99");
+            $('input[type=tel]').mask("(999) 999-999");
 
             let sessionWarning = "{{ session('warning') }}";
             if (sessionWarning) {
