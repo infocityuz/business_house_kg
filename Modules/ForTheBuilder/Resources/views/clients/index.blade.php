@@ -60,7 +60,7 @@
                         $n = 1;
                     @endphp
                     @foreach ($models as $key => $value)
-                        @dd($value)   
+                        {{-- @dd($value)    --}}
                         @if (isset($value))
                             <div class="jkMiniData mb-1 hideData">
                                 <input type="hidden" class="hiddenData"
