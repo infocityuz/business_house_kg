@@ -117,7 +117,7 @@
 
                         <div style=" margin-top: -40px;">
                             @if(isset($model->phone_number))
-                                <p class="profileOtherData">{{'+998 '.$model->phone_number}}</p>
+                                <p class="profileOtherData">{{'+996 '.$model->phone_number}}</p>
                             @else
                                 <p class="profileOtherData"></p>
                             @endif

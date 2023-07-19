@@ -51,7 +51,7 @@
                             <div class="form-group">
                                 <label for="phone_number">{{ translate('Phone number') }}</label> <br>
                                 <label id="phone_number" style="margin-bottom: -35px;z-index: 99;width: 50px;margin-left: 5px;margin-right: -55px;position: sticky;margin-top: 13px;padding-left: 6px;"
-                                       for="+998">+998</label>
+                                       for="+998">+996</label>
                                 <input name="phone_number" style="padding-left: 54px" maxlength="9"
                                        class="sozdatImyaSpisokInput1272 @error('phone_number') error-data-input is-invalid @enderror"
                                        value="{{$model->phone_number, old('phone_number') }}" type="text">
