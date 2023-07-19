@@ -321,9 +321,13 @@ class ClientsController extends Controller
         $model->status = Constants::ACTIVE;
         $model->type = $data['lead_status'];
         $model->looking_for = $data['looking_for'];
-        $model->house_id = $data['house_id'];
-        $model->house_flat_id = $data['house_flat_id'];
-        $model->budget = $data['budget'];
+
+        if($request->deal_status == 2){
+            $model->house_id = $data['house_id'];
+            $model->house_flat_id = $data['house_flat_id'];
+            $model->budget = $data['budget'];
+        }
+
         $model->save();
         if (isset($model->id)) {
             return redirect()->route('forthebuilder.clients.index')->with('success', translate('successfully'));

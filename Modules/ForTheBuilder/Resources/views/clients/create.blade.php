@@ -149,11 +149,12 @@
                     <div class="d-flex justify-content-between">
                         <div class="form-group width_45">
                             <h3 class="sozdatImyaSpisokH3">{{ translate('status') }}</h3>
-                            <select class="form-control width_100 sozdatImyaSpisokSelectOption @error('lead_status') is-invalid error-data-input @enderror"
+                            <select class="form-control width_100 @error('lead_status') is-invalid error-data-input @enderror"
                                     id="exampleFormControlSelect1" name="lead_status" data-placeholder="{{ translate('select') }}">
                                 <option value="{{ Constants::FIRST_CONTACT }}">{{ translate('First contact') }}</option>
-                                <option value="{{ Constants::NEGOTIATION }}">{{ translate('Negotiation') }}</option>
+                                <option {{$house_flat == ''?'':"selected"}} value="{{ Constants::NEGOTIATION }}">{{ translate('Negotiation') }}</option>
                             </select>
+                            <input type="hidden" value="" name="deal_status" id="deal_status">
                             <span class="error-data">
                                 @error('lead_status')
                                 {{ $message }}
@@ -172,7 +173,6 @@
                             </span>
                         </div>
                     </div>
-
 
                     <div class="d-flex justify-content-between">
                         <div class="sozdatImyaSpsok width_45">
@@ -262,6 +262,7 @@
 
     <script>
         let page_name = 'clients';
+        let deal_status = document.getElementById('deal_status')
         $(document).ready(function() {
             $('#sent').datetimepicker({
                 format: 'Y-M-D',
@@ -273,15 +274,19 @@
                 toastr.warning(sessionWarning)
             }
             if($('#exampleFormControlSelect1').val() == 2){
+                deal_status.value = 2;
                 if($('#flat_modal').hasClass('d-none')){
                     $('#flat_modal').removeClass('d-none');
                 }
                 if($('#budget_modal').hasClass('d-none')){
                     $('#budget_modal').removeClass('d-none');
                 }
+            }else{
+                deal_status.value = 1;
             }
             $('#exampleFormControlSelect1').on('change', function(){
                 if($(this).val() == 2){
+                    deal_status.value  = 2
                     if($('#flat_modal').hasClass('d-none')){
                         $('#flat_modal').removeClass('d-none');
                     }
@@ -289,6 +294,7 @@
                         $('#budget_modal').removeClass('d-none');
                     }
                 }else{
+                    deal_status.value = 1
                     if(!$('#flat_modal').hasClass('d-none')){
                         $('#flat_modal').addClass('d-none');
                     }
