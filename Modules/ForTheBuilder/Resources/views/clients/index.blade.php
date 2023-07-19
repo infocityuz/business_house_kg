@@ -60,10 +60,11 @@
                         $n = 1;
                     @endphp
                     @foreach ($models as $key => $value)
-                        {{-- @dd($value->deal_id)    --}}
+                        @dd($value)   
                         @if (isset($value))
                             <div class="jkMiniData mb-1 hideData">
                                 <input type="hidden" class="hiddenData"
+                                    {{-- dd() --}}
                                     value="{{ $value->client_id ? $value->client_first_name . ' ' . $value->client_last_name . ' ' . $value->client_middle_name : '' }} {{ $value->house_name ?? '' }} {{ $value->price_sell ?? '' }} {{ $value->task_id ? $value->task_title : $defaultAction[$value->deal_type] }}">
                                 <div class="d-flex lidiHrefBigLidiData">
                                     <a href="{{ route('forthebuilder.clients.show', [$value->client_id, '0', '0']) }}" class="checkboxDivInput">
