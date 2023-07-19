@@ -90,7 +90,7 @@ Route::group(['prefix' => 'forthebuilder', 'middleware' => ['auth', 'forthebuild
     Route::group(['prefix' => 'clients'], function () {
         Route::get('/', [ClientsController::class, 'index'])->name('forthebuilder.clients.index');
         Route::get('/all-clients', [ClientsController::class, 'allClients'])->name('forthebuilder.clients.all-clients');
-        Route::get('/create/{house_flat_id?}', [ClientsController::class, 'create'])->name('forthebuilder.clients.create');
+        Route::get('/create/{house_flat_id}', [ClientsController::class, 'create'])->name('forthebuilder.clients.create');
         Route::post('/store', [ClientsController::class, 'store'])->name('forthebuilder.clients.store');
         Route::post('/store-photo', [ClientsController::class, 'storePhoto'])->name('forthebuilder.clients.storePhoto');
         Route::get('/edit/{id}', [ClientsController::class, 'edit'])->name('forthebuilder.clients.edit');

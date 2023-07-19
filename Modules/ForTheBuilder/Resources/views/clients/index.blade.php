@@ -12,7 +12,7 @@
                 <div class="d-flex justify-content-between">
                     <div class="d-flex">
                         <h2 class="panelUprText">{{ translate('Clients') }}</h2>
-                        <a href="{{ route('forthebuilder.clients.create') }}" class="plus2">+</a>
+                        <a href="{{ route('forthebuilder.clients.create', '0') }}" class="plus2">+</a>
                     </div>
                     <div class="miniSearchDiv">
                         <ion-icon class="miniSearchIconInput" name="search-outline"></ion-icon>
