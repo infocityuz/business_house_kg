@@ -82,7 +82,7 @@ class ClientsController extends Controller
                 ->leftJoin($connect_for.'.clients as dt2', 'dt2.id', '=', 'dt1.client_id')
                 ->leftJoin($connect_for.'.task as dt3', 'dt3.deal_id', '=', 'dt1.id')
                 ->leftJoin($connect_for.'.house as dt4', 'dt4.id', '=', 'dt1.house_id')
-                ->select('dt1.id as deal_id', 'dt1.price_sell','dt1.type as deal_type', 'dt2.id as client_id',  'dt2.first_name as client_first_name', 'dt2.last_name as client_last_name', 'dt2.middle_name as client_middle_name',  'dt3.title as task_title', 'dt4.name as house_name')
+                ->select('dt1.id as deal_id', 'dt1.price_sell','dt1.type as deal_type', 'dt2.id as client_id',  'dt2.first_name as client_first_name', 'dt2.last_name as client_last_name', 'dt2.middle_name as client_middle_name',  'dt3.title as task_title','dt3.id as task_id', 'dt4.name as house_name')
                 ->where('dt2.status',Constants::CLIENT_ACTIVE)
                 ->where('dt1.user_id',$user->id)
                 ->orderByDesc('dt1.created_at')
