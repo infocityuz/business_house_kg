@@ -3,6 +3,7 @@
 @php
     use Modules\ForTheBuilder\Entities\Constants;
 @endphp
+
 @section('content')
     <div class="d-flex aad">
         @include('forthebuilder::layouts.content.navigation')
@@ -76,15 +77,15 @@
                         <h3 class="sozdatImyaSpisokH3">{{ translate('Phone number') }}</h3>
                         <div class="d-flex">
                             <div>
-                                <img src="{{ asset('backend-assets/forthebuilders/images/region.png') }}" alt="Region">
+                                <img style="width:70px" src="{{ asset('backend-assets/forthebuilders/images/kirgiz.jpg') }}" alt="Region">
                             </div>
                             <div>
                                 <label
                                         style="margin-bottom: -35px;z-index: 99;width: 50px;margin-left: 5px;margin-right: -55px;position: sticky;margin-top: 13px;padding-left: 6px;"
-                                        for="+998">+998</label>
+                                        for="+998">+996</label>
                                 <input
                                         class="sozdatImyaSpisokInputTel keyUpName booking-phone @error('phone') error-data-input is-invalid @enderror"
-                                        type="tel" id="phone" name="phone" {{-- pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" --}}
+                                        type="tel" id="phone" name="phone"
                                         value="{{ $data['phone'] ?? old('phone') }}">
                                 <div class="keyUpNameResult d-none"
                                      style="width: 65%; background: lightgrey; max-height: 220px; position: absolute; margin-top: 75px; overflow: scroll; border-radius: 15px;">
@@ -102,12 +103,12 @@
                         <h3 class="sozdatImyaSpisokH3">{{ translate('Additional phone number') }}</h3>
                         <div class="d-flex">
                             <div>
-                                <img src="{{ asset('backend-assets/forthebuilders/images/region.png') }}" alt="Region">
+                                <img style="width:70px" src="{{ asset('backend-assets/forthebuilders/images/kirgiz.jpg') }}" alt="Region">
                             </div>
                             <div>
                                 <label
                                         style="margin-bottom: -35px;z-index: 99;width: 50px;margin-left: 5px;margin-right: -55px;position: sticky;margin-top: 13px;padding-left: 6px;"
-                                        for="+998">+998</label>
+                                        for="+998">+996</label>
                                 <input
                                         class="sozdatImyaSpisokInputTel keyUpName booking-additional_phone @error('additional_phone') error-data-input is-invalid @enderror"
                                         type="tel" id="additional_phone" name="additional_phone" {{-- pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" --}}
@@ -171,6 +172,8 @@
                             </span>
                         </div>
                     </div>
+
+
                     <div class="d-flex justify-content-between">
                         <div class="sozdatImyaSpsok width_45">
                             <h3 class="sozdatImyaSpisokH3">{{ translate('Serial number of the passport') }}</h3>
@@ -186,6 +189,7 @@
                                 {{ $message }}
                                 @enderror
                             </span>
+
                         </div>
 
                         <div class="sozdatImyaSpsok width_45">
