@@ -325,7 +325,8 @@ class DealController extends Controller
                 $model->installment_plan_id = $data['period'];
                 $model->initial_fee = $data['initial_fee'];
                 $model->initial_fee_date = date('Y-m-d H:i:s', strtotime($data['installment_date']));
-            }
+            } 
+            $user = Auth::user();
             $model->history = json_encode([['date' => date('Y-m-d H:i:s'), 'user' => $user->first_name, 'user_id' => $user->id, 'user_photo' => $user->avatar, 'new_type' => 'Making a deal', 'old_type' => NULL]]);
             $model->save();
 
