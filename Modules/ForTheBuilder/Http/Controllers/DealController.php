@@ -2,15 +2,20 @@
 
 namespace Modules\ForTheBuilder\Http\Controllers;
 
+use Exception;
 use App\components\ImageResize;
 use App\components\StaticFunctions;
 use App\Http\Controllers\Controller;
 use App\Models\ApartmentSaleContacts;
 use App\Models\ObjectContacts;
 use Doctrine\DBAL\Query\QueryException;
-use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Response;
+use Modules\ForTheBuilder\Http\Requests\DealRequest;
 use Modules\ForTheBuilder\Entities\Deal;
 use Modules\ForTheBuilder\Entities\DealsFile;
 use Modules\ForTheBuilder\Entities\House;
@@ -21,11 +26,6 @@ use Modules\ForTheBuilder\Entities\InstallmentPlan;
 use Modules\ForTheBuilder\Entities\Notification_;
 use Modules\ForTheBuilder\Entities\PayStatus;
 use Modules\ForTheBuilder\Entities\PersonalInformations;
-use Modules\ForTheBuilder\Http\Requests\DealRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Response;
 use Modules\ForTheBuilder\Entities\Booking;
 use Modules\ForTheBuilder\Entities\Clients;
 use Modules\ForTheBuilder\Entities\Constants;
@@ -35,10 +35,8 @@ use PhpOffice\PhpWord\Shared\Html;
 
 use function Illuminate\Support\Str;
 
-
 class DealController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -144,19 +142,13 @@ class DealController extends Controller
      */
     public function create(Request $request)
     {
-        // dd($request);
         $houses = House::all();
-        // $houseFlat = HouseFlat::
-        // $getHouse = '';
-        // if ($request->house_id)
-        //     $getHouse = House::find($request->house_id);
-
+     
         $deal_agreement_number = Deal::select('agreement_number')->latest('id')->first();
 
         $agreement_number_increment = ((!empty($deal_agreement_number)) ? ((int)substr($deal_agreement_number->agreement_number, 0, -6)) : 0) + 1;
         $installmentPlan = InstallmentPlan::get();
-        // pre($installmentPlan);
-
+     
         // if (file_exists(public_path('/uploads/tmp_files/' . Auth::user()->id . '/deal')))
         //     $dealFiles = File::allFiles(public_path('/uploads/tmp_files/' . Auth::user()->id . '/deal'));
         return view('forthebuilder::deal.create', [
@@ -331,7 +323,6 @@ class DealController extends Controller
             $model->save();
 
             $modelBooking = Booking::find(['house_flat_id' => $data['house_flat_id']]);
-            // dd(count($modelBooking));
             if (isset($modelBooking) && count($modelBooking) > 0)
                 $modelBooking->delete();
 
@@ -441,10 +432,10 @@ class DealController extends Controller
             // ]);
             // return redirect()->route($url)->with('success', __('locale.successfully'));
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            // dd($e->getMessage());
             //=================== file yuklash yakunlandi === mana shu controllerdagi fileUpload methodga qara ===================
             DB::rollBack();
-            // return redirect()->route('forthebuilder.deals.create');
+            return redirect()->route('forthebuilder.deal.create')->with('success', $e->getMessage());
         }
     }
 

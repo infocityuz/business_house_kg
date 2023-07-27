@@ -32,7 +32,8 @@
 
             <div class="d-flex justify-content-between">
                 <div class="d-flex">
-                    <a href="{{ route('forthebuilder.house.index') }}" class="plus2 profileMaxNazadInformatsiyaKlient">
+                    {{-- @dd($model) --}}
+                    <a href="{{ route('forthebuilder.house.show-details', [$model->house_id, $model->entrance, 0]) }}" class="plus2 profileMaxNazadInformatsiyaKlient">
                         <img src="{{ asset('backend-assets/forthebuilders/images/icons/arrow-left.png') }}" alt="">
                     </a>
                     <h2 class="panelUprText">
@@ -145,14 +146,14 @@
                         </div>
                     @endif
 
-                    @if ($areas->hotel)
-                    <div class="jkEditText1">
-                        <div class="jkAttributEdit2">{{ translate('Hotel') }}</div>
-                        <div class="jkAttributEdit2">{{ $areas->hotel ?? 0 }}</div>
-                    </div>
+                    @if (isset($areas->hotel))
+                        <div class="jkEditText1">
+                            <div class="jkAttributEdit2">{{ translate('Hotel') }}</div>
+                            <div class="jkAttributEdit2">{{ $areas->hotel ?? 0 }}</div>
+                        </div>
                     @endif
                     
-                    @if ($areas->bedroom)
+                    @if (isset($areas->bedroom))
                         <div class="jkEditText1">
                             <div class="jkAttributEdit2">{{ translate('Bedroom') }}</div>
                             <div class="jkAttributEdit2">{{ $areas->bedroom ?? 0 }}</div>

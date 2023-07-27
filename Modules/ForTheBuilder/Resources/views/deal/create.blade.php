@@ -38,7 +38,6 @@
                                 <select
                                     class="form-control sozdatImyaSpisokSelectOptionJkProdno deal_create_house_id @error('house_id') is-invalid error-data-input @enderror"
                                     readonly id="exampleFormControlSelect1" name="house_id">
-                                    {{-- <option value="default">-----------------</option> --}}
                                     @if (!empty($houses))
                                         @foreach ($houses as $house)
                                             @if (isset(request()->house_id) && $house->id == request()->house_id)
@@ -46,16 +45,6 @@
                                                     {{ $house->name }} {{ $house->description }}
                                                 </option>
                                             @endif
-
-                                            {{-- @if (isset(request()->house_id) && $house->id == request()->house_id)
-                                                <option value="{{ $house->id }}" selected>
-                                                    {{ $house->name }} {{ $house->description }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $house->id }}" selected>
-                                                    {{ $house->name }} {{ $house->description }}
-                                                </option>
-                                            @endif --}}
                                         @endforeach
                                     @endif
                                 </select>
@@ -118,6 +107,34 @@
                                     </span>
                                 </div>
                             </div>
+
+                            {{-- ________________________________________ --}}
+                            <div class="sozdatImyaSpsok">
+                                <h3 class="sozdatImyaSpisokH3Prodno">{{ translate('Reception-transmission') }}</h3>
+                                <input type="text" name="reception_transmission"
+                                    class="sozdatImyaSpisokInputProdnoBig form-control @error('reception_transmission') error-data-input is-invalid @enderror"
+                                    id="reception_transmission"
+                                    value="{{ old('reception_transmission') }}">
+                                <span class="error-data">
+                                    @error('reception_transmission')
+                                        {{ $messager }}
+                                    @enderror
+                                </span>
+                            </div>
+
+                            <div class="sozdatImyaSpsok">
+                                <h3 class="sozdatImyaSpisokH3Prodno">{{ translate('Number of rooms in words') }}</h3>
+                                <input type="text" name="number_rooms_words"
+                                    class="sozdatImyaSpisokInputProdnoBig form-control @error('number_rooms_words') error-data-input is-invalid @enderror"
+                                    id="number_rooms_words"
+                                    value="{{ old('number_rooms_words') }}">
+                                <span class="error-data">
+                                    @error('number_rooms_words')
+                                        {{ $messager }}
+                                    @enderror
+                                </span>
+                            </div>
+                            {{-- ________________________________________ --}}
 
                             <h3 class="prodnoDataH5Text">{{ translate('Passport data of the client') }}</h3>
 
@@ -392,14 +409,18 @@
                                     </span>
                                 </div>
 
-                                <!-- <div class="form-group">
-                                    <h3 class="sozdatImyaSpisokH3Prodno">{{ translate('Gender') }}</h3>
-                                    <select class="form-control sozdatImyaSpisokSelectOptionJkProdno"
-                                        id="exampleFormControlSelect1" name="gender">
-                                        <option value="1">{{ translate('Man') }}</option>
-                                        <option value="0">{{ translate('Woman') }}</option>
-                                    </select>
-                                </div> -->
+                                {{-- ________________________________________ --}}
+                                <div class="form-group" style="margin-right: 30px;">
+                                    <h3 class="sozdatImyaSpisokH3Prodno">{{ translate('Price in words') }}</h3>
+                                    <input type="text" name="price_words" class="form-control sozdatImyaSpisokSelectOptionJkProdno @error('price_words') error-data-input is-invalid @enderror" value="{{ old('price_words') }}">
+
+                                    <span class="error-data">
+                                        @error('price_words')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </div>
+                                {{-- ________________________________________ --}}
 
                                 <div class="form-group" style="margin-right: 30px; width: 250px;">
                                     <h3 class="sozdatImyaSpisokH3">{{ translate('Coupon') }}</h3>

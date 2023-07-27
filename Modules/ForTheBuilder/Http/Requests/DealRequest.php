@@ -57,6 +57,10 @@ class DealRequest extends BaseFormRequest
             'model_house_flat_id' => 'string|nullable',
             'model_client_id' => 'string|nullable',
             'model_type' => 'string|nullable',
+            
+            'reception_transmission' => 'string|nullable',
+            'number_rooms_words' => 'string|nullable',
+            'price_words' => 'string|nullable',
             // 'period' => 'required|string|max:255',
             // 'percent' => 'required|string|max:255',
             // 'an_initial_fee' => 'nullable|string|max:255',
@@ -116,6 +120,10 @@ class DealRequest extends BaseFormRequest
             'model_looking_for' => 'string|nullable',
             'model_client_id' => 'string|nullable',
             'model_type' => 'string|nullable',
+
+            'reception_transmission' => 'string|nullable',
+            'number_rooms_words' => 'string|nullable',
+            'price_words' => 'string|nullable',
         ];
     }
 }
