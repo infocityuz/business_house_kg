@@ -37,7 +37,7 @@
                         <img src="{{ asset('backend-assets/forthebuilders/images/icons/arrow-left.png') }}" alt="">
                     </a>
                     <h2 class="panelUprText">
-                        @if (is_int($model->room_count))
+                        @if ($model->room_count > 0)
                             {{ $model->number_of_flat }} - {{ translate('flat') }} {{ $model->total_area }} м <sup>2</sup>
                         @elseif ($model->room_count == 'p')
                             {{ $model->number_of_flat }} - {{ translate('parking') }}
